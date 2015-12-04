@@ -1,0 +1,68 @@
+?SNDlib
+# network nobel-us
+
+# META SECTION
+#load = 2, 4, 6, 8, 10, 12, 14, 16,18, 20 [= 18, 36, 72, 108-> scaling ( 1 1 1 ) ( 2 2 2 ) (4 4 4) (6 6 6)]
+# scaling s_i =Load/(sum of bandwidth)
+#Scaling
+
+META (
+  Arrival_process ( EXP-1.0 ) 
+  Traffic_classes ( 3 )
+  Bandwidths ( 4 6 8)
+  Scaling ( 0.1111 0.1111 0.1111 ) ( 0.2222 0.2222 0.2222 ) ( 0.3333 0.3333 0.3333 ) ( 0.4444 0.4444 0.4444 ) ( 0.5555 0.5555 0.5555 ) ( 0.6667 0.6667 0.6667 ) ( 0.7778 0.7778 0.7778 ) ( 0.8889 0.8889 0.8889 ) ( 1 1 1 ) (1.1111 1.1111 1.1111 )
+  Holding_time ( EXP-1.0-1.0 EXP-1.0-1.0 EXP-1.0-1.0 )
+  Connection_feature ( 0.0 0.0 0.0 )
+ )
+
+# NODE SECTION
+#
+# <node_id> [(<longitude>, <latitude>)]
+
+NODES (
+  N1 ( -122.07 37.25 )
+  N2 ( -117.08 32.42 )
+  )
+
+# LINK SECTION
+#
+# <link_id> ( <source> <target> ) <pre_installed_capacity> <pre_installed_capacity_cost> <routing_cost> <setup_cost> ( {<module_capacity> <module_cost>}* )
+
+LINKS (
+  L1 ( N1 N2 ) 0.00 0.00 ( 100.00 0.00 )
+    )
+
+# DEMAND SECTION
+#
+# <demand_id> ( <source> <target> ) <routing_unit> <demand_value> <max_path_length>
+# 10 Gbps demands ( routing_unit 1)
+
+DEMANDS (
+  PaloAltoSanDiego ( N1 N2 ) 1 1.00 UNLIMITED
+    )
+
+# DEMAND SECTION
+#
+# <demand_id> ( <source> <target> ) <routing_unit> <demand_value> <max_path_length>
+# 40 Gbps demands ( routing_unit 1)
+
+DEMANDS (
+  PaloAltoSanDiego ( N1 N2 ) 1 1.00 UNLIMITED
+)
+
+# DEMAND SECTION
+#
+# <demand_id> ( <source> <target> ) <routing_unit> <demand_value> <max_path_length>
+# 100 Gbps demands ( routing_unit 1)
+
+DEMANDS (
+  PaloAltoSanDiego ( N1 N2 ) 1 1.00 UNLIMITED
+)
+
+# ADMISSIBLE PATHS SECTION
+#
+# <demand_id> ( {<path_id> ( <link_id>+ )}+ )
+
+ADMISSIBLE_PATHS (
+ N1-N2
+  )
