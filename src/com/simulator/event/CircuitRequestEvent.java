@@ -76,8 +76,9 @@ public class CircuitRequestEvent extends Event {
                 /** Apply Defragmentation */
                 // if blocked due to fragmentation
                 if (!auxiliaryGraph.getIfblockedDueToResourceUnavailability()) {
-                    new ReconfigureLink();
-                    SimulatorParameters.setDefrag(true);
+                    ReconfigureLink reconfigureLink = new ReconfigureLink();
+                    int fragment = reconfigureLink.reconfigLightpaths();
+                    SimulatorParameters.setDefrag(true,fragment);
                     double defragTime = SimulatorParameters.getDefragTime();
                     Event event = new DefragEvent(new Entity(defragTime));
                     Scheduler.schedule(event, defragTime);

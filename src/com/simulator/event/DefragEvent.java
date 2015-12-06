@@ -14,7 +14,7 @@ public class DefragEvent extends Event {
         }
 
     public void occur(){
-        SimulatorParameters.setDefrag(false);
+        SimulatorParameters.setDefrag(false,1);
     }
 
 }

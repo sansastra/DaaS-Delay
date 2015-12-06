@@ -10,8 +10,8 @@ link.txt
 0
 # Total Number Of slots
 20
-# Enter Defragmentation Rate (per slot)(Defragmentation is always 1)
-1
+# Enter Defragmentation Rate (per slot)(Defragmentation is always performed)
+10
 # Policy {FF => 1} {RF => 2}
 1
 # Seeds
